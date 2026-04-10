@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBTI 人格测试 - MBTI已经过时了</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .author-info {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+        }
+        .author-info a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+        .author-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页 -->
+    <div id="home-page" class="page active">
+        <div class="card home-card">
+            <h1 class="title">MBTI已经过时，SBTI来了。</h1>
+            <p class="subtitle">Silly Big Personality Test</p>
+            <button class="btn btn-primary start-btn" id="start-btn">
+                开始测试
+            </button>
+            <p class="attribution">
+                原作者: <a href="https://space.bilibili.com/417038183" target="_blank">B站@蛆肉儿串儿</a>
+            </p>
+            <p class="attribution">托管: GitHub Pages</p>
+            <p class="disclaimer">
+                ⚠️ 本测试仅供娱乐，请勿当真<br>
+                27种人格类型 · 31道趣味题目 · 15维度评分
+            </p>
+        </div>
+    </div>
+
+    <!-- 测试页面 -->
+    <div id="test-page" class="page">
+        <!-- 顶部进度 -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-text">
+            <span id="current-num">0</span> / <span id="total-num">31</span>
+        </div>
+        <p class="progress-hint">世界已经够乱了，起码把题做完整</p>
+
+        <!-- 左右分栏布局 -->
+        <div class="test-container">
+            <!-- 左侧：上一题 -->
+            <div class="side-panel left-panel" id="left-panel">
+                <div class="side-content" id="left-content">
+                    <div class="side-placeholder">
+                        <span class="arrow">←</span>
+                        <p>这里是上一题</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中间：当前题目 -->
+            <div class="center-panel">
+                <div class="current-question" id="current-question">
+                    <!-- 动态生成题目内容 -->
+                </div>
+            </div>
+
+            <!-- 右侧：下一题 -->
+            <div class="side-panel right-panel" id="right-panel">
+                <div class="side-content" id="right-content">
+                    <div class="side-placeholder">
+                        <p>这里是下一题</p>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部按钮 -->
+        <div class="bottom-buttons">
+            <button class="btn btn-secondary" id="prev-btn">
+                ← 上一题
+            </button>
+            <button class="btn btn-secondary" id="next-btn">
+                下一题 →
+            </button>
+        </div>
+
+        <!-- 提交按钮 -->
+        <button class="btn btn-submit" id="submit-btn" style="display: none;">
+            提交并查看结果
+        </button>
+    </div>
+
+    <!-- 结果页面 -->
+    <div id="result-page" class="page">
+        <div class="card result-card">
+            <div class="result-header">
+                <h2>怎么样，被我拿捏了吧？</h2>
+            </div>
+            
+            <div class="result-type">
+                <p class="result-label">你的主类型</p>
+                <p class="result-value" id="result-type">加载中...</p>
+                <div class="match-rate">
+                    匹配度 <span id="match-percent">0</span>%
+                </div>
+            </div>
+
+            <div class="result-system-note">
+                <p id="system-note">系统备注加载中...</p>
+            </div>
+
+            <div class="result-interpretation">
+                <h3>该人格的简单解读</h3>
+                <p id="interpretation-text">解读加载中...</p>
+            </div>
+
+            <div class="result-dimensions">
+                <h3>十五维度评分</h3>
+                <p class="dimensions-hint">L=低 M=中 H=高</p>
+                <div class="dimensions-grid" id="dimensions-grid">
+                    <!-- 动态生成维度评分 -->
+                </div>
+            </div>
+
+            <div class="share-buttons">
+                <button class="btn btn-share" id="share-btn">分享结果</button>
+                <button class="btn btn-share" id="copy-btn">复制结果</button>
+            </div>
+
+            <button class="btn btn-secondary" id="restart-btn">
+                重新测试
+            </button>
+            
+            <div class="author-note">
+                <h4>作者的话</h4>
+                <p>本测试首发于 b站 up主蛆肉儿串儿（UID417038183），初衷是劝诫一位爱喝酒的朋友戒酒。</p>
+                <p>由于作者的人格是 SHIT 愤世者，所以平等的攻击了各位，在此抱歉！！不过我是一个绝世大美女，你们一定会原谅我，有 B站的朋友们也可以关注我。</p>
+                <p>关于这个测试，我没法很好的平衡娱乐和专业性，因此对于一些人格的阐释较为模糊或完全不准（如屌丝可能并非真的屌丝），如有冒犯非常抱歉！！</p>
+                <p>本测试仅供娱乐，别拿它当诊断、面试、相亲、分手、招魂、算命或人生判决书。你可以笑，但别太当真。</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
